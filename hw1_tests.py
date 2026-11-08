@@ -13,6 +13,8 @@ and implement the functions in hw1.py. Do not simply delete the tests.
 
 import unittest
 
+from math import sqrt
+
 import data
 import hw1
 
@@ -21,75 +23,74 @@ class TestHomework1(unittest.TestCase):
 
     # Part 1: vowel_count
     def test_vowel_count_case_insensitive(self):
-        # TODO: Arrange inputs, call hw1.vowel_count, and assert the result.
-        self.fail("TODO: write the first unit test for vowel_count")
+        self.assertEqual(hw1.vowel_count("HEllo WOrld"), 3)
 
     def test_vowel_count_empty_string(self):
-        # TODO: Arrange inputs, call hw1.vowel_count, and assert the result.
-        self.fail("TODO: write the second unit test for vowel_count")
+        self.assertEqual(hw1.vowel_count(""), 0)
 
     # Part 2: short_lists
     def test_short_lists_mixed_lengths(self):
-        # TODO: Arrange inputs, call hw1.short_lists, and assert the result.
-        self.fail("TODO: write the first unit test for short_lists")
+        self.assertEqual(hw1.short_lists([[1, 2], [3, 4], [5, 6, 7]]), [[1, 2], [3, 4]])
 
     def test_short_lists_no_matching_lengths(self):
-        # TODO: Arrange inputs, call hw1.short_lists, and assert the result.
-        self.fail("TODO: write the second unit test for short_lists")
+        self.assertEqual(hw1.short_lists([[1], [2, 3, 4], [5, 6, 7, 8]]), [])
 
     # Part 3: ascending_pairs
     def test_ascending_pairs_reversed_pairs(self):
-        # TODO: Arrange inputs, call hw1.ascending_pairs, and assert the result.
-        self.fail("TODO: write the first unit test for ascending_pairs")
+        self.assertEqual(hw1.ascending_pairs([[2, 1], [4, 3]]), [[1, 2], [3, 4]])
 
     def test_ascending_pairs_other_lengths_unchanged(self):
-        # TODO: Arrange inputs, call hw1.ascending_pairs, and assert the result.
-        self.fail("TODO: write the second unit test for ascending_pairs")
+        self.assertEqual(hw1.ascending_pairs([[1, 2, 3], [5, 4, 6]]), [[1, 2, 3], [5, 4, 6]])
 
     # Part 4: add_prices
     def test_add_prices_no_cents_carry(self):
-        # TODO: Arrange inputs, call hw1.add_prices, and assert the result.
-        self.fail("TODO: write the first unit test for add_prices")
+        self.assertEqual(hw1.add_prices(data.Price(1, 50), data.Price(2, 25)), data.Price(3, 75))
 
     def test_add_prices_with_cents_carry(self):
-        # TODO: Arrange inputs, call hw1.add_prices, and assert the result.
-        self.fail("TODO: write the second unit test for add_prices")
+        self.assertEqual(hw1.add_prices(data.Price(1, 75), data.Price(2, 50)), data.Price(4, 25))
 
     # Part 5: rectangle_area
     def test_rectangle_area_standard_rectangle(self):
-        # TODO: Arrange inputs, call hw1.rectangle_area, and assert the result.
-        self.fail("TODO: write the first unit test for rectangle_area")
+        self.assertEqual(hw1.rectangle_area(data.Rectangle(data.Point(0, 0), data.Point(2, 3))), 6)
 
     def test_rectangle_area_negative_coordinates(self):
-        # TODO: Arrange inputs, call hw1.rectangle_area, and assert the result.
-        self.fail("TODO: write the second unit test for rectangle_area")
+        self.assertEqual(hw1.rectangle_area(data.Rectangle(data.Point(-1, -1), data.Point(1, 1))), 4)
 
     # Part 6: books_by_author
     def test_books_by_author_matching_authors(self):
-        # TODO: Arrange inputs, call hw1.books_by_author, and assert the result.
-        self.fail("TODO: write the first unit test for books_by_author")
+        book1 = data.Book(["John"], "a book")
+        book2 = data.Book(["John"], "another book")
+        self.assertEqual(hw1.books_by_author("John", [book1, book2]), [book1, book2])
 
     def test_books_by_author_no_matches(self):
-        # TODO: Arrange inputs, call hw1.books_by_author, and assert the result.
-        self.fail("TODO: write the second unit test for books_by_author")
+        book1 = data.Book(["John", "Jane"], "a book")
+        book2 = data.Book(["Doe"], "another book")
+        self.assertEqual(hw1.books_by_author("Gary", [book1, book2]), [])
 
     # Part 7: circle_bound
     def test_circle_bound_square(self):
-        # TODO: Arrange inputs, call hw1.circle_bound, and assert the result.
-        self.fail("TODO: write the first unit test for circle_bound")
+        square = data.Rectangle(data.Point(0, 0), data.Point(2, 2))
+        circle = data.Circle(data.Point(1, 1), sqrt(8) / 2)
+        self.assertEqual(hw1.circle_bound(square), circle)
 
     def test_circle_bound_non_square_rectangle(self):
-        # TODO: Arrange inputs, call hw1.circle_bound, and assert the result.
-        self.fail("TODO: write the second unit test for circle_bound")
+        rectangle = data.Rectangle(data.Point(0, 0), data.Point(2, 4))
+        circle = data.Circle(data.Point(1, 2), sqrt(20) / 2)
+        self.assertEqual(hw1.circle_bound(rectangle), circle)
 
     # Part 8: below_pay_average
     def test_below_pay_average_different_pay_rates(self):
-        # TODO: Arrange inputs, call hw1.below_pay_average, and assert the result.
-        self.fail("TODO: write the first unit test for below_pay_average")
+        employees = [
+            data.Employee("John", 10),
+            data.Employee("Jane", 20),
+            data.Employee("Doe", 45)
+        ]
+
+        self.assertEqual(hw1.below_pay_average(employees), ["John", "Jane"])
 
     def test_below_pay_average_empty_list(self):
-        # TODO: Arrange inputs, call hw1.below_pay_average, and assert the result.
-        self.fail("TODO: write the second unit test for below_pay_average")
+        employees = []
+        self.assertEqual(hw1.below_pay_average(employees), [])
 
 
 if __name__ == '__main__':
